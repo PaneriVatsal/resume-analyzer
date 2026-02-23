@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Vibe Check — LinkedIn Promo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ========== SLIDE 1: Hero ========== */
+        .slide {
+            width: 1200px;
+            height: 628px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+            background: #0a0a0a;
+            margin: 0 auto 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(187,134,252,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(3,218,198,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Slide 1: Hero */
+        .hero-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: 1px solid rgba(187,134,252,0.3);
+            background: rgba(187,134,252,0.08);
+            color: #bb86fc;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.05;
+            background: linear-gradient(135deg, #bb86fc 0%, #03dac6 50%, #00e676 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            max-width: 700px;
+            line-height: 1.5;
+            margin-bottom: 36px;
+        }
+
+        .hero-subtitle strong {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #bb86fc, #03dac6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        .hero-footer {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .tech-tag {
+            padding: 6px 16px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .tech-tag .icon { margin-right: 6px; }
+
+        /* ========== SLIDE 2: Features ========== */
+        .features-slide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 0;
+        }
+
+        .features-left {
+            padding: 50px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .features-left h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .features-left .accent-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #bb86fc, #03dac6);
+            border-radius: 2px;
+            margin-bottom: 28px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: rgba(187,134,252,0.1);
+            border: 1px solid rgba(187,134,252,0.2);
+        }
+
+        .feature-icon.cyan {
+            background: rgba(3,218,198,0.1);
+            border-color: rgba(3,218,198,0.2);
+        }
+
+        .feature-icon.green {
+            background: rgba(0,230,118,0.1);
+            border-color: rgba(0,230,118,0.2);
+        }
+
+        .feature-text h3 {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.4;
+        }
+
+        .features-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 40px 40px 20px;
+        }
+
+        /* Mock UI Card */
+        .mock-ui {
+            width: 100%;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+
+        .mock-titlebar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .mock-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .mock-dot.red { background: #ff5f57; }
+        .mock-dot.yellow { background: #febc2e; }
+        .mock-dot.green { background: #28c840; }
+
+        .mock-body {
+            padding: 20px;
+        }
+
+        .mock-table-header {
+            display: grid;
+            grid-template-columns: 0.4fr 1fr 0.8fr 1.2fr 0.8fr;
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.35);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mock-table-row {
+            display: grid;
+            grid-template-columns: 0.4fr 1fr 0.8fr 1.2fr 0.8fr;
+            padding: 10px 12px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .mock-table-row .rank {
+            font-size: 14px;
+            font-weight: 700;
+            color: #bb86fc;
+        }
+
+        .mock-table-row .name {
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+        }
+
+        .score-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .score-bar {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .score-bar.high { background: linear-gradient(90deg, #00e676, #03dac6); }
+        .score-bar.mid { background: linear-gradient(90deg, #bb86fc, #03dac6); }
+        .score-bar.low { background: linear-gradient(90deg, #ff7043, #ffa726); }
+
+        .status-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .status-badge.interview {
+            background: rgba(0,230,118,0.12);
+            color: #00e676;
+            border: 1px solid rgba(0,230,118,0.25);
+        }
+
+        .status-badge.review {
+            background: rgba(187,134,252,0.12);
+            color: #bb86fc;
+            border: 1px solid rgba(187,134,252,0.25);
+        }
+
+        .status-badge.reject {
+            background: rgba(255,112,67,0.12);
+            color: #ff7043;
+            border: 1px solid rgba(255,112,67,0.25);
+        }
+
+        .score-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* ========== SLIDE 3: Architecture ========== */
+        .arch-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 80px;
+            text-align: center;
+        }
+
+        .arch-slide h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: -1px;
+        }
+
+        .arch-slide .sub {
+            font-size: 16px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 40px;
+        }
+
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .arch-node {
+            padding: 24px 20px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            text-align: center;
+            width: 180px;
+            transition: all 0.3s;
+        }
+
+        .arch-node:hover {
+            border-color: rgba(187,134,252,0.3);
+            background: rgba(187,134,252,0.05);
+        }
+
+        .arch-node .node-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .arch-node .node-title {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .arch-node .node-tech {
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .arch-arrow {
+            font-size: 24px;
+            color: rgba(187,134,252,0.5);
+        }
+
+        .arch-footer {
+            margin-top: 40px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .arch-footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.45);
+            font-size: 13px;
+        }
+
+        .arch-footer-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .arch-footer-dot.purple { background: #bb86fc; }
+        .arch-footer-dot.cyan { background: #03dac6; }
+        .arch-footer-dot.green { background: #00e676; }
+
+        /* ========== SLIDE 4: CTA ========== */
+        .cta-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 80px;
+        }
+
+        .cta-slide .github-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 28px;
+        }
+
+        .cta-slide h2 {
+            font-size: 44px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+        }
+
+        .cta-slide h2 span {
+            background: linear-gradient(135deg, #bb86fc, #03dac6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-slide .cta-sub {
+            font-size: 18px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 36px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        .cta-url {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(187,134,252,0.2), rgba(3,218,198,0.2));
+            border: 1px solid rgba(187,134,252,0.3);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+        }
+
+        .cta-author {
+            font-size: 15px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .cta-author strong {
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+
+        /* Label */
+        .slide-label {
+            text-align: center;
+            color: #666;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        body {
+            background: #1a1a1a;
+            padding: 40px 0;
+        }
+
+        .instructions {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 24px 32px;
+            background: rgba(187,134,252,0.08);
+            border: 1px solid rgba(187,134,252,0.2);
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .instructions h2 {
+            color: #bb86fc;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .instructions li {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        .instructions code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #03dac6;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Instructions -->
+    <div class="instructions">
+        <h2>📸 How to Use These for LinkedIn</h2>
+        <ol>
+            <li>Each slide below is <strong>1200×628px</strong> — the perfect LinkedIn image size</li>
+            <li>Take a <strong>screenshot of each slide</strong> individually (use <code>Win + Shift + S</code> on Windows)</li>
+            <li>Upload all 4 as a <strong>carousel/multi-image post</strong> on LinkedIn</li>
+            <li>Or pick your favorite 1–2 slides as standalone images</li>
+            <li>Pair with the LinkedIn post text from the previous message</li>
+        </ol>
+    </div>
+
+    <!-- SLIDE 1: Hero -->
+    <p class="slide-label">📌 Slide 1 — Hero (Screenshot this)</p>
+    <div class="slide hero-slide">
+        <div class="hero-badge">🤖 Open Source Project</div>
+        <h1 class="hero-title">AI Resume<br>Vibe Check</h1>
+        <p class="hero-subtitle">
+            Upload resumes. Paste a job description.<br>
+            Get a <strong>ranked candidate list</strong> — powered by AI.
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">&lt; 2min</div>
+                <div class="stat-label">Per 100 Resumes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Open Source</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">0$</div>
+                <div class="stat-label">Cost to Use</div>
+            </div>
+        </div>
+        <div class="hero-footer">
+            <span class="tech-tag"><span class="icon">▲</span> Next.js 16</span>
+            <span class="tech-tag"><span class="icon">⚡</span> React 19</span>
+            <span class="tech-tag"><span class="icon">🔄</span> n8n Workflows</span>
+            <span class="tech-tag"><span class="icon">🧠</span> Google Gemini</span>
+            <span class="tech-tag"><span class="icon">📝</span> TypeScript</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Features + Mock UI -->
+    <p class="slide-label">📌 Slide 2 — Features & Results Preview (Screenshot this)</p>
+    <div class="slide features-slide">
+        <div class="features-left">
+            <h2>What It Does</h2>
+            <div class="accent-line"></div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📄</div>
+                <div class="feature-text">
+                    <h3>Multi-Resume Upload</h3>
+                    <p>Upload PDF/Doc files in batch for parallel analysis</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon cyan">🎯</div>
+                <div class="feature-text">
+                    <h3>JD Matching</h3>
+                    <p>AI scores each candidate against your job description</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon green">📊</div>
+                <div class="feature-text">
+                    <h3>Vibe Score Ranking</h3>
+                    <p>Visual match percentage with automatic ranking</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🏷️</div>
+                <div class="feature-text">
+                    <h3>Smart Status Tags</h3>
+                    <p>Auto-categorize: Interview, Review, or Reject</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon cyan">📅</div>
+                <div class="feature-text">
+                    <h3>Interview Scheduling</h3>
+                    <p>Suggested interview dates for top candidates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-right">
+            <div class="mock-ui">
+                <div class="mock-titlebar">
+                    <div class="mock-dot red"></div>
+                    <div class="mock-dot yellow"></div>
+                    <div class="mock-dot green"></div>
+                </div>
+                <div class="mock-body">
+                    <div class="mock-table-header">
+                        <span>#</span>
+                        <span>Candidate</span>
+                        <span>Score</span>
+                        <span>Match</span>
+                        <span>Status</span>
+                    </div>
+                    <div class="mock-table-row">
+                        <span class="rank">#1</span>
+                        <span class="name">Priya Sharma</span>
+                        <span class="score-text">94%</span>
+                        <div class="score-bar-container"><div class="score-bar high" style="width: 94%"></div></div>
+                        <span class="status-badge interview">Interview</span>
+                    </div>
+                    <div class="mock-table-row">
+                        <span class="rank">#2</span>
+                        <span class="name">Arjun Mehta</span>
+                        <span class="score-text">87%</span>
+                        <div class="score-bar-container"><div class="score-bar high" style="width: 87%"></div></div>
+                        <span class="status-badge interview">Interview</span>
+                    </div>
+                    <div class="mock-table-row">
+                        <span class="rank">#3</span>
+                        <span class="name">Sneha Reddy</span>
+                        <span class="score-text">72%</span>
+                        <div class="score-bar-container"><div class="score-bar mid" style="width: 72%"></div></div>
+                        <span class="status-badge review">Review</span>
+                    </div>
+                    <div class="mock-table-row">
+                        <span class="rank">#4</span>
+                        <span class="name">Karan Patel</span>
+                        <span class="score-text">58%</span>
+                        <div class="score-bar-container"><div class="score-bar mid" style="width: 58%"></div></div>
+                        <span class="status-badge review">Review</span>
+                    </div>
+                    <div class="mock-table-row">
+                        <span class="rank">#5</span>
+                        <span class="name">Rahul Joshi</span>
+                        <span class="score-text">31%</span>
+                        <div class="score-bar-container"><div class="score-bar low" style="width: 31%"></div></div>
+                        <span class="status-badge reject">Reject</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Architecture -->
+    <p class="slide-label">📌 Slide 3 — Architecture Flow (Screenshot this)</p>
+    <div class="slide arch-slide">
+        <h2>How It Works</h2>
+        <p class="sub">End-to-end AI pipeline from upload to ranked results</p>
+
+        <div class="arch-flow">
+            <div class="arch-node">
+                <div class="node-icon">📄</div>
+                <div class="node-title">Upload Resumes</div>
+                <div class="node-tech">PDF / Doc files</div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="node-icon">▲</div>
+                <div class="node-title">Next.js Frontend</div>
+                <div class="node-tech">React 19 + TypeScript</div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="node-icon">🔗</div>
+                <div class="node-title">API Proxy</div>
+                <div class="node-tech">Route Handlers</div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="node-icon">🔄</div>
+                <div class="node-title">n8n Workflow</div>
+                <div class="node-tech">Automation Engine</div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="node-icon">🧠</div>
+                <div class="node-title">Gemini AI</div>
+                <div class="node-tech">Resume Analysis</div>
+            </div>
+        </div>
+
+        <div class="arch-footer">
+            <div class="arch-footer-item">
+                <div class="arch-footer-dot purple"></div>
+                <span>AI-Powered Scoring</span>
+            </div>
+            <div class="arch-footer-item">
+                <div class="arch-footer-dot cyan"></div>
+                <span>Auto Status Tagging</span>
+            </div>
+            <div class="arch-footer-item">
+                <div class="arch-footer-dot green"></div>
+                <span>Interview Scheduling</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: CTA -->
+    <p class="slide-label">📌 Slide 4 — Call to Action (Screenshot this)</p>
+    <div class="slide cta-slide">
+        <div class="github-icon">⭐</div>
+        <h2>It's <span>Open Source</span></h2>
+        <p class="cta-sub">
+            Star the repo. Fork it. Build on it.<br>
+            Hiring doesn't have to be painful.
+        </p>
+        <div class="cta-url">
+            🔗 github.com/PaneriVatsal/resume-analyzer
+        </div>
+        <p class="cta-author">
+            Built by <strong>Vatsal Paneri</strong> · Next.js · n8n · Gemini AI
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+I built an AI tool that ranks 100 resumes in under 2 minutes.
+
+No ATS. No expensive SaaS. Just open source.
+
+Here's the problem:
+→ Hiring managers spend 7 seconds per resume
+→ Great candidates get lost in the pile
+→ Manual screening doesn't scale
+
+So I built AI Resume Vibe Check 🤖
+
+Paste a job description. Upload resumes. Get a ranked list — instantly.
+
+Here's what it does:
+📄 Accepts multiple resumes (PDF/Doc) in one batch
+🎯 Matches each candidate against your JD using Google Gemini AI
+📊 Generates a "Vibe Score" — a match percentage for every candidate
+🏷️ Auto-tags candidates as Interview, Review, or Reject
+📅 Suggests interview dates for top matches
+
+The architecture:
+⚡ Next.js 16 + React 19 frontend
+🔄 n8n workflow automation for AI orchestration
+🧠 Google Gemini for intelligent resume parsing
+🎨 Dark glassmorphism UI that actually looks good
+
+The best part? It's completely open source.
+
+🔗 GitHub: https://github.com/PaneriVatsal/resume-analyzer
+
+If you've ever spent hours screening resumes — this one's for you.
+
+♻️ Repost if this could help someone in your network.
+💬 Drop a comment — what feature would you add?
+
+#AI #OpenSource #Recruitment #HRTech #ResumeScreening #n8n #NextJS #GoogleGemini #Automation #BuildInPublic #SideProject #WebDevelopment #MachineLearning #TechForGood
